@@ -4,6 +4,7 @@ import Login from "@/components/Login";
 import Logout from "@/components/Logout";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "@/firebase";
+import Link from "next/link";
 
 export default function Home() {
   const [user] = useAuthState(auth);
@@ -23,6 +24,7 @@ export default function Home() {
             </code>
           </p>
           <div>{user ? <Logout /> : <Login />}</div>
+          <div>{user && <Link href={"/add-items"}>Add Items</Link>}</div>
         </div>
 
         <div className={styles.center}>
