@@ -10,7 +10,7 @@ export default () => {
 
   const onSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    fetch("/api/items", {
+    fetch("/api/add-item", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

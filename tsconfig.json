@@ -17,7 +17,7 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./*"],
-      "@firebase": ["firebase.ts"],
+      "@firebase": ["./firebase/"],
       "@components": ["./components/*"]
     }
   },

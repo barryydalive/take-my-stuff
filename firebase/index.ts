@@ -9,7 +9,7 @@ const configuration = {
   appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
 };
 
-const app = initializeApp(configuration);
-export const auth = getAuth(app);
+const clientApp = initializeApp(configuration);
+export const auth = getAuth(clientApp);
 
-export default app;
+export default clientApp;
