@@ -11,7 +11,7 @@ export default async function getUserItems(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const userId = req.body.uId;
+  const userId = req.query.uId;
   const allItems: Item[] = [];
   const itemsRef = await firestore.collection("items");
   const snapshot = await itemsRef.where("ownerId", "==", userId).get();
