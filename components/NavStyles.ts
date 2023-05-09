@@ -13,18 +13,21 @@ export const NavToolbar = styled(Toolbar)({
 
 export const NavLeftContainer = styled("div")({
   display: "flex",
-  alignItems: "center",
+  justifyContent: "flex-start",
+  flex: 1,
 });
 
 export const NavRightContainer = styled("div")({
   display: "flex",
-  alignItems: "center",
+  flex: 1,
+  justifyContent: "flex-end",
 });
 
 export const NavTypography = styled(Typography)({
   color: "#fff",
   flex: 1,
   textAlign: "center",
+  margin: "auto",
 });
 
 export const NavButton = styled(Button)({

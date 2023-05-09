@@ -4,6 +4,7 @@ import {
   useSignOut,
   useAuthState,
 } from "react-firebase-hooks/auth";
+import axios from "axios";
 import { auth } from "@/firebase";
 import BackButton from "./BackButton";
 import { useRouter } from "next/router";
@@ -22,8 +23,21 @@ const NavBar = () => {
   const [signInWithGoogle] = useSignInWithGoogle(auth);
   const [signOut] = useSignOut(auth);
 
-  const handleLogin = async () => {
-    await signInWithGoogle();
+  const handleLogin = async (): Promise<void> => {
+    try {
+      const signedInUser = await signInWithGoogle();
+      if (signedInUser) {
+        const { user } = signedInUser;
+        await axios.post("/api/create-user", {
+          uid: user.uid,
+          email: user.email,
+          displayName: user.displayName,
+          photoURL: user.photoURL,
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const handleLogout = async () => {
@@ -42,6 +56,9 @@ const NavBar = () => {
         <NavRightContainer>
           <Link href={"/add-items"}>
             <NavButton>Add Items</NavButton>
+          </Link>
+          <Link href={"/items"}>
+            <NavButton>My Items</NavButton>
           </Link>
           <NavButton onClick={user ? handleLogout : handleLogin}>
             {user ? "Logout" : "Login"}

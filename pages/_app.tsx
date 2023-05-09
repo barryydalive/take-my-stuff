@@ -6,7 +6,9 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <NavBar />
-      <Component {...pageProps} />
+      <div style={{ marginTop: "2rem" }}>
+        <Component {...pageProps} />
+      </div>
     </>
   );
 }
