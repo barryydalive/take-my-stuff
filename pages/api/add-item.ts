@@ -9,6 +9,7 @@ export default async function addItem(
     category: req.body.category,
     name: req.body.name,
     ownerId: req.body.uId,
+    imageUrl: req.body.imageUrl,
   };
   const newItem = await firestore.collection("items").add(data);
 
